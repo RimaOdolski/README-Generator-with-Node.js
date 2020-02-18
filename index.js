@@ -1,11 +1,15 @@
-let inquirer = require("inquirer");
-let fs = require('fs');
-let writeFileAsync = util.promisify(fs.writeFile);
+const inquirer = require("inquirer");
+const fs = require('fs');
 const util = require("util");
+const writeFileAsync = util.promisify(fs.writeFile);
+const axios = require("axios");
+const queryUrl = `https://api.github.com/users/${answers.username}`;
 
 
 
-inquirer.prompt([
+
+function promptUser() {
+    return inquirer.prompt([
     {
         type:"input",
         name: "username",
@@ -56,10 +60,11 @@ inquirer.prompt([
 
     },
 
-])
+]);
+}
 
 
-function generateReadMe (answers) {
+function generateReadMe (response,answers,links) {
  return `
  ##  ${answers.project}
 
@@ -89,7 +94,7 @@ function generateReadMe (answers) {
  
  
  ## License
- ${answers.choices}
+ ${answers.license}
  ## Contributing
  ${answers.contribute}
  
@@ -100,10 +105,10 @@ function generateReadMe (answers) {
  
  ## Questions
  
- <img src="" alt="avatar" style="border-radius: 16px" width="30" />
+ <img src="${response.avatar_url}" alt="avatar" style="border-radius: 16px" width="30" />
  
- If you have any questions about the repo, open an issue or contact [${answers.username}](https://api.github.com/users/${answers.username}).
- `
+ If you have any questions about the repo, open an issue or contact [${response.login}](${response.html_url}).
+ `;
 
 
 
@@ -112,10 +117,29 @@ function generateReadMe (answers) {
 promptUser()
 .then(function(answers){
 
-    const readMe = generateReadMe (answers);
+    if (answers.license=== "MIT") {
+        link = "https://img.shields.io/badge/License-MIT-yellow.svg"
+    }
+
+    if (answers.license === "Mozilla") {
+        link = "[![License: MPL 2.0](https://img.shields.io/badge/License-MPL%202.0-brightgreen.svg)](https://opensource.org/licenses/MPL-2.0)"
+    }
+    if (answers.license === "Zlib") {
+
+        link = "[![License: Zlib](https://img.shields.io/badge/License-Zlib-lightgrey.svg)](https://opensource.org/licenses/Zlib)"
+    }
+
+    axios.get(queryUrl).then(function(res) {
+        const response = res.data;
+          
+        });
+    const readMe = generateReadMe (response,answers,link);
     return writeFileAsync ("template.md", readMe);
 })
 .then(function() {
     console.log("Successfully wrote to template.md");
   })
-
+  .catch(function(err) {
+    console.log(err);
+  });
+ 
