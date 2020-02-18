@@ -1,10 +1,10 @@
 
- ##  rima
- [![License](https://img.shields.io/badge/License-MIT-yellow.svg)](undefined/rima)
+ ##  README Generator using Node.js
+ ![License](https://img.shields.io/badge/License-MIT-yellow.svg)
 
 
  ## Description
-  this ismy fav
+  
  
  ## Table of Contents 
  
@@ -25,13 +25,13 @@
  npm i
  
  ## Usage
- kdkdkdddddddddddddddddddd
+ 
  
  
  ## License
- ### This project is licensed under
+ MIT
  ## Contributing
- qqqqqqqqood
+ 
  
  
  ## Tests
