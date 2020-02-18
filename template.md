@@ -1,8 +1,10 @@
 
- ##  Miral Naya
+ ##  rima
+ [![License](https://img.shields.io/badge/License-MIT-yellow.svg)](undefined/rima)
+
 
  ## Description
-  This project is about my cute kids
+  this ismy fav
  
  ## Table of Contents 
  
@@ -20,25 +22,25 @@
  * [Questions](#questions)
  
  ## Installation
- undefined
+ npm i
  
  ## Usage
- nothing
+ kdkdkdddddddddddddddddddd
  
  
  ## License
- undefined
+ ### This project is licensed under
  ## Contributing
- nothing
+ qqqqqqqqood
  
  
  ## Tests
- test
+ npm test
  
  
  ## Questions
  
- <img src="" alt="avatar" style="border-radius: 16px" width="30" />
+ <img src="https://avatars0.githubusercontent.com/u/58153124?v=4" alt="avatar" style="border-radius: 16px" width="30" />
  
- If you have any questions about the repo, open an issue or contact [RimaOdolski](https://api.github.com/users/RimaOdolski).
+ If you have any questions about the repo, open an issue or contact [RimaOdolski](https://github.com/RimaOdolski).
  

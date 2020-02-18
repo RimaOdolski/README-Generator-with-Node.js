@@ -1,10 +1,9 @@
 const inquirer = require("inquirer");
+const axios = require("axios");
 const fs = require('fs');
 const util = require("util");
 const writeFileAsync = util.promisify(fs.writeFile);
-const axios = require("axios");
-const queryUrl = `https://api.github.com/users/${answers.username}`;
-
+let  readMe;
 
 
 
@@ -39,14 +38,18 @@ function promptUser() {
     },
     {
         type:"input",
-        name:"dependicies",
-        message:"What command should be run to install dependencies?"
+        name:"installation",
+        message:"What command should be run to install dependencies?",
+        default: 'npm i',
+
     },
 
     {
         type:"input",
         name:"test",
         message:"What command should be run to run tests?",
+        default: 'npm test'
+
     },
     {
         type:"input",
@@ -64,9 +67,11 @@ function promptUser() {
 }
 
 
-function generateReadMe (response,answers,links) {
+function generateReadMe (response,answers,link) {
  return `
  ##  ${answers.project}
+ [![License](${link})](${response.htm_url}/${answers.project})
+
 
  ## Description
   ${answers.description}
@@ -87,7 +92,8 @@ function generateReadMe (response,answers,links) {
  * [Questions](#questions)
  
  ## Installation
- ${answers.dependencies}
+ ${answers.installation
+}
  
  ## Usage
  ${answers.additionalInfo}
@@ -128,13 +134,16 @@ promptUser()
 
         link = "[![License: Zlib](https://img.shields.io/badge/License-Zlib-lightgrey.svg)](https://opensource.org/licenses/Zlib)"
     }
+    const queryUrl = `https://api.github.com/users/${answers.username}`;
 
     axios.get(queryUrl).then(function(res) {
         const response = res.data;
-          
-        });
-    const readMe = generateReadMe (response,answers,link);
+        const readMe = generateReadMe (response,answers,link);
     return writeFileAsync ("template.md", readMe);
+      
+          
+    });
+    
 })
 .then(function() {
     console.log("Successfully wrote to template.md");
