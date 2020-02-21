@@ -1,10 +1,10 @@
 
- ##  README Generator using Node.js
+ ##  README Generator with Node.js
  ![License](https://img.shields.io/badge/License-MIT-yellow.svg)
 
 
  ## Description
-  
+  .exit 
  
  ## Table of Contents 
  

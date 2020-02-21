@@ -70,7 +70,7 @@ function promptUser() {
 function generateReadMe (response,answers,link) {
  return `
  ##  ${answers.project}
- [![License](${link})](${response.htm_url}/${answers.project})
+ ![License](${link})
 
 
  ## Description
