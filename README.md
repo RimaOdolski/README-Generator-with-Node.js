@@ -29,7 +29,8 @@ SO THAT I can easily put together a good README for a new project
   * The generated README includes 1 badge that's specific to the repository.
 
 
-Used github user API to retrieve profile picture
+Used github user API to retrieve profile picture:
+
 https://api.github.com/users/<username_goes_here>
 
 ![CLI Snippet](assets/CLI.png)
