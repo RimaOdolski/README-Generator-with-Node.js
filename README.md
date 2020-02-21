@@ -9,9 +9,10 @@ SO THAT I can easily put together a good README for a new project
 
 # DESCRIPTION 
 
-### In this project, we create a command-line application that dynamically generates a README.md from a user's input. The application will be invoked with the following command: 
+ In this project, we create a command-line application that dynamically generates a README.md from a user's input. The application will be invoked with the following command: 
   node index.js
-### The generated page is titled template.md
+  
+ The generated page is titled template.md
   ### The generated README includes the following sections:
   * Title
 
